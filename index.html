@@ -1,1 +1,1588 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Community</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+            background: #fafafa;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                         Roboto, Helvetica, Arial, sans-serif;
+            color: #262626;
+        }
+
+
+        /* =========================
+           TOP NAVIGATION
+        ========================= */
+
+        .navbar {
+            height: 60px;
+            background: white;
+            border-bottom: 1px solid #dbdbdb;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 25px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+
+        .nav-right {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+
+        .nav-button {
+            border: none;
+            background: none;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           MAIN PAGE
+        ========================= */
+
+        .page {
+            width: 100%;
+            max-width: 580px;
+            margin: 0 auto;
+            padding-bottom: 50px;
+        }
+
+
+        /* =========================
+           STORIES
+        ========================= */
+
+        .stories-container {
+            background: white;
+            border: 1px solid #dbdbdb;
+            margin-top: 20px;
+            padding: 18px 45px;
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        .stories {
+            display: flex;
+            gap: 18px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+        }
+
+
+        .stories::-webkit-scrollbar {
+            display: none;
+        }
+
+
+        .story {
+            min-width: 75px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+
+        .story-ring {
+            width: 66px;
+            height: 66px;
+            border-radius: 50%;
+            padding: 3px;
+            margin: 0 auto 5px;
+
+            background: linear-gradient(
+                45deg,
+                #feda75,
+                #fa7e1e,
+                #d62976,
+                #962fbf,
+                #4f5bd5
+            );
+        }
+
+
+        .story-ring.seen {
+            background: #c7c7c7;
+        }
+
+
+        .story-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px solid white;
+            object-fit: cover;
+            background: #ddd;
+        }
+
+
+        .story-name {
+            font-size: 12px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+
+        .add-story {
+            position: relative;
+        }
+
+
+        .add-icon {
+            position: absolute;
+            bottom: 1px;
+            right: 2px;
+            background: #0095f6;
+            color: white;
+            width: 21px;
+            height: 21px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid white;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+
+        .story-arrow {
+            position: absolute;
+            top: 38px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: none;
+            background: white;
+            box-shadow: 0 2px 7px rgba(0,0,0,0.2);
+            cursor: pointer;
+            z-index: 2;
+            font-size: 18px;
+        }
+
+
+        .story-arrow.left {
+            left: 10px;
+        }
+
+
+        .story-arrow.right {
+            right: 10px;
+        }
+
+
+        /* =========================
+           POSTS
+        ========================= */
+
+        .feed {
+            margin-top: 25px;
+        }
+
+
+        .post {
+            background: white;
+            border: 1px solid #dbdbdb;
+            margin-bottom: 25px;
+        }
+
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            gap: 10px;
+        }
+
+
+        .post-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+
+        .post-user-info {
+            flex: 1;
+        }
+
+
+        .post-username {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+
+        .post-character {
+            color: #777;
+            font-size: 12px;
+        }
+
+
+        .more-button {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+
+        .post-image {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            display: block;
+            background: #eee;
+        }
+
+
+        .post-actions {
+            padding: 10px 15px 5px;
+            display: flex;
+            gap: 16px;
+        }
+
+
+        .action-button {
+            border: none;
+            background: none;
+            font-size: 25px;
+            cursor: pointer;
+            padding: 0;
+        }
+
+
+        .action-button.liked {
+            color: #ed4956;
+        }
+
+
+        .likes {
+            padding: 0 15px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+
+        .caption {
+            padding: 7px 15px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+
+        .caption strong {
+            margin-right: 5px;
+        }
+
+
+        .comments {
+            padding: 0 15px;
+        }
+
+
+        .comment {
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+
+
+        .comment strong {
+            margin-right: 5px;
+        }
+
+
+        .timestamp {
+            color: #999;
+            font-size: 10px;
+            text-transform: uppercase;
+            padding: 8px 15px 12px;
+        }
+
+
+        .comment-form {
+            display: flex;
+            border-top: 1px solid #efefef;
+            padding: 10px 15px;
+        }
+
+
+        .comment-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 14px;
+        }
+
+
+        .comment-submit {
+            border: none;
+            background: none;
+            color: #0095f6;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           STORY VIEWER
+        ========================= */
+
+        .story-viewer {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.88);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 500;
+        }
+
+
+        .story-viewer.active {
+            display: flex;
+        }
+
+
+        .story-content {
+            width: min(420px, 90vw);
+            height: min(750px, 90vh);
+            background: #222;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+
+        .story-content img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+
+        .story-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 18px;
+            color: white;
+            background: linear-gradient(
+                rgba(0,0,0,0.5),
+                transparent
+            );
+            pointer-events: none;
+        }
+
+
+        .story-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+
+        .story-profile img {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+        }
+
+
+        .close-story {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .page {
+                width: 100%;
+            }
+
+
+            .stories-container {
+                border-left: none;
+                border-right: none;
+            }
+
+
+            .post {
+                border-left: none;
+                border-right: none;
+            }
+
+
+            .navbar {
+                padding: 0 15px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Gallery
+        </div>
+
+
+        <div class="nav-right">
+
+            <button class="nav-button">
+                Home
+            </button>
+
+            <button class="nav-button">
+                ♡
+            </button>
+
+            <button class="nav-button">
+                ☰
+            </button>
+
+        </div>
+
+    </nav>
+
+
+    <main class="page">
+
+
+        <!-- =========================
+             CHARACTER STORIES
+        ========================= -->
+
+        <section class="stories-container">
+
+
+            <button
+                class="story-arrow left"
+                onclick="scrollStories(-250)"
+            >
+                ‹
+            </button>
+
+
+            <div
+                class="stories"
+                id="stories"
+            >
+
+
+                <!-- YOUR STORY -->
+
+                <!--
+                    This does NOT do anything when clicked.
+                -->
+
+                <div class="story">
+
+                    <div class="story-ring add-story">
+
+                        <img
+                            class="story-image"
+                            src="profile.jpg"
+                            alt="Your Story"
+                        >
+
+                        <div class="add-icon">
+                            +
+                        </div>
+
+                    </div>
+
+
+                    <div class="story-name">
+                        Your Story
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================
+                     TRIXIE STORY
+                ========================= -->
+
+                <div
+                    class="story"
+                    onclick="openStory(
+                        'Trixie',
+                        [
+                            'trixiestory1.PNG',
+                            'trixiestory2.PNG',
+                            'trixiestory3.JPG'
+                        ],
+                        'trixieprofile.PNG'
+                    )"
+                >
+
+                    <div class="story-ring">
+
+                        <img
+                            class="story-image"
+                            src="trixieprofile.PNG"
+                            alt="Trixie"
+                        >
+
+                    </div>
+
+
+                    <div class="story-name">
+                        Trixie
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================
+                     VEX STORY
+                ========================= -->
+
+                <div
+                    class="story"
+                    onclick="openStory(
+                        'Vex',
+                        [
+                            'vexstory1.jpg',
+                            'vexstory2.PNG',
+                            'vexstory3.jpg',
+                            'vexstory4.jpg'
+                        ],
+                        'profilevex.PNG'
+                    )"
+                >
+
+                    <div class="story-ring">
+
+                        <img
+                            class="story-image"
+                            src="profilevex.PNG"
+                            alt="VEX"
+                        >
+
+                    </div>
+
+
+                    <div class="story-name">
+                        Vex
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================
+                     VIOLA STORY
+                ========================= -->
+
+                <div
+                    class="story"
+                    onclick="openStory(
+                        'Viola',
+                        [
+                            'violastory1.PNG',
+                            'violastory2.PNG'
+                        ],
+                        'violaprofile.PNG'
+                    )"
+                >
+
+                    <div class="story-ring">
+
+                        <img
+                            class="story-image"
+                            src="violaprofile.PNG"
+                            alt="Viola"
+                        >
+
+                    </div>
+
+
+                    <div class="story-name">
+                        Viola
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================
+                     VAX STORY
+                ========================= -->
+
+                <div
+                    class="story"
+                    onclick="openStory(
+                        'Vax',
+                        [
+                            'vaxstory1.PNG',
+                            'vaxstory2.PNG'
+                        ],
+                        'vaxprofile.PNG'
+                    )"
+                >
+
+                    <div class="story-ring">
+
+                        <img
+                            class="story-image"
+                            src="vaxprofile.PNG"
+                            alt="Vax"
+                        >
+
+                    </div>
+
+
+                    <div class="story-name">
+                        Vax
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================
+                     MINSU STORY
+                ========================= -->
+
+                <div
+                    class="story"
+                    onclick="openStory(
+                        'Minsu',
+                        [
+                            'minsustory1.PNG',
+                            'minsustory2.PNG'
+                        ],
+                        'minsuprofile.PNG'
+                    )"
+                >
+
+                    <div class="story-ring">
+
+                        <img
+                            class="story-image"
+                            src="minsuprofile.PNG"
+                            alt="Minsu"
+                        >
+
+                    </div>
+
+
+                    <div class="story-name">
+                        Minsu
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================
+                     ADD ANOTHER CHARACTER HERE
+                ========================= -->
+
+                <div
+                    class="story"
+                    onclick="openStory(
+                        'ADD NAME',
+                        [
+                            'story1.PNG',
+                            'story2.PNG'
+                        ],
+                        'profile.PNG'
+                    )"
+                >
+
+                    <div class="story-ring">
+
+                        <img
+                            class="story-image"
+                            src="profile.PNG"
+                            alt="ADD NAME"
+                        >
+
+                    </div>
+
+
+                    <div class="story-name">
+                        ADD NAME
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                class="story-arrow right"
+                onclick="scrollStories(250)"
+            >
+                ›
+            </button>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             FEED
+        ========================= -->
+
+        <section
+            class="feed"
+            id="feed"
+        >
+
+            <!--
+                POSTS ARE CREATED BY JAVASCRIPT
+                FROM THE POSTS ARRAY BELOW.
+            -->
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         STORY VIEWER
+    ========================= -->
+
+    <div
+        class="story-viewer"
+        id="storyViewer"
+        onclick="closeStory(event)"
+    >
+
+
+        <div class="story-content">
+
+
+            <button
+                class="close-story"
+                onclick="closeStory()"
+            >
+                ×
+            </button>
+
+
+            <!--
+                Clicking this image advances
+                to the next story picture.
+            -->
+
+            <img
+                id="storyImage"
+                src=""
+                alt=""
+                onclick="nextStoryImage(event)"
+            >
+
+
+            <div class="story-overlay">
+
+
+                <div class="story-profile">
+
+                    <img
+                        id="storyAvatar"
+                        src=""
+                        alt=""
+                    >
+
+
+                    <strong id="storyUsername">
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <script>
+
+
+        /* =====================================================
+           POSTS
+        ===================================================== */
+
+
+        const posts = [
+
+
+            {
+                username: "trixie",
+
+                character: "Trixie",
+
+                avatar:
+                    "https://picsum.photos/200?random=20",
+
+                image:
+                    "https://picsum.photos/800/800?random=30",
+
+                likes: 127,
+
+                caption:
+                    "finally got around to drawing this outfit ✨",
+
+                comments: [
+
+                    {
+                        username: "vex",
+                        text: "This looks so good."
+                    },
+
+                    {
+                        username: "viola",
+                        text: "I LOVE THIS."
+                    },
+
+                    {
+                        username: "vax",
+                        text: "okay this is actually amazing"
+                    }
+
+                ],
+
+                time: "2 hours ago"
+            },
+
+
+            {
+                username: "violet_skies",
+
+                character: "VEX",
+
+                avatar:
+                    "https://picsum.photos/200?random=21",
+
+                image:
+                    "https://picsum.photos/800/800?random=31",
+
+                likes: 284,
+
+                caption:
+                    "Experimenting with a completely different style this time.",
+
+                comments: [
+
+                    {
+                        username: "trixie",
+                        text: "WAIT I LOVE THIS STYLE"
+                    },
+
+                    {
+                        username: "minsu",
+                        text: "The lighting is really cool."
+                    }
+
+                ],
+
+                time: "5 hours ago"
+            },
+
+
+            {
+                username: "viola_art",
+
+                character: "Viola",
+
+                avatar:
+                    "https://picsum.photos/200?random=22",
+
+                image:
+                    "https://picsum.photos/800/800?random=32",
+
+                likes: 93,
+
+                caption:
+                    "little character study 💜",
+
+                comments: [
+
+                    {
+                        username: "vax",
+                        text: "You cooked with this one."
+                    }
+
+                ],
+
+                time: "Yesterday"
+            },
+
+
+            /* =================================================
+               COPY THIS OBJECT TO ADD ANOTHER POST
+            ================================================= */
+
+
+            {
+                username: "ADD_USERNAME",
+
+                character: "ADD CHARACTER",
+
+                avatar:
+                    "https://picsum.photos/200?random=40",
+
+                image:
+                    "https://picsum.photos/800/800?random=41",
+
+                likes: 0,
+
+                caption:
+                    "ADD YOUR CAPTION HERE",
+
+                comments: [
+
+                    {
+                        username: "someone",
+                        text: "ADD A FAKE COMMENT HERE"
+                    }
+
+                ],
+
+                time: "Just now"
+            }
+
+
+        ];
+
+
+
+        /* =====================================================
+           RENDER FEED
+        ===================================================== */
+
+
+        const feed =
+            document.getElementById("feed");
+
+
+        posts.forEach((post, index) => {
+
+
+            const postElement =
+                document.createElement("article");
+
+
+            postElement.className = "post";
+
+
+            postElement.innerHTML = `
+
+
+                <div class="post-header">
+
+
+                    <img
+                        class="post-avatar"
+                        src="${post.avatar}"
+                        alt="${post.character}"
+                    >
+
+
+                    <div class="post-user-info">
+
+
+                        <div class="post-username">
+                            ${post.username}
+                        </div>
+
+
+                        <div class="post-character">
+                            ${post.character}
+                        </div>
+
+
+                    </div>
+
+
+                    <button class="more-button">
+                        ···
+                    </button>
+
+
+                </div>
+
+
+
+                <img
+                    class="post-image"
+                    src="${post.image}"
+                    alt="Fan art by ${post.username}"
+                >
+
+
+
+                <!-- POST BUTTONS -->
+
+                <div class="post-actions">
+
+
+                    <!-- LIKE -->
+
+                    <button
+                        class="action-button like-button"
+                        onclick="likePost(${index}, this)"
+                    >
+                        ♡
+                    </button>
+
+
+                    <!-- COMMENT -->
+
+                    <button
+                        class="action-button"
+                        onclick="focusComment(${index})"
+                    >
+                        💬
+                    </button>
+
+
+                    <!-- SHARE -->
+
+                    <button
+                        class="action-button"
+                        onclick="sharePost()"
+                    >
+                        ↗
+                    </button>
+
+
+                </div>
+
+
+
+                <div
+                    class="likes"
+                    id="likes-${index}"
+                >
+                    ${post.likes} likes
+                </div>
+
+
+
+                <div class="caption">
+
+                    <strong>
+                        ${post.username}
+                    </strong>
+
+                    ${post.caption}
+
+                </div>
+
+
+
+                <div
+                    class="comments"
+                    id="comments-${index}"
+                >
+
+                    ${renderComments(post.comments)}
+
+                </div>
+
+
+
+                <div class="timestamp">
+                    ${post.time}
+                </div>
+
+
+
+                <form
+                    class="comment-form"
+                    onsubmit="addComment(event, ${index})"
+                >
+
+
+                    <input
+                        class="comment-input"
+                        id="comment-input-${index}"
+                        type="text"
+                        placeholder="Add a comment..."
+                        autocomplete="off"
+                    >
+
+
+                    <button
+                        class="comment-submit"
+                        type="submit"
+                    >
+                        Post
+                    </button>
+
+
+                </form>
+
+
+            `;
+
+
+            feed.appendChild(postElement);
+
+
+        });
+
+
+
+        /* =====================================================
+           COMMENTS
+        ===================================================== */
+
+
+        function renderComments(comments) {
+
+
+            return comments.map(comment => `
+
+
+                <div class="comment">
+
+
+                    <strong>
+                        ${comment.username}
+                    </strong>
+
+
+                    ${comment.text}
+
+
+                </div>
+
+
+            `).join("");
+
+
+        }
+
+
+
+        function addComment(event, index) {
+
+
+            event.preventDefault();
+
+
+            const input =
+                document.getElementById(
+                    `comment-input-${index}`
+                );
+
+
+            const text =
+                input.value.trim();
+
+
+            if (!text) {
+                return;
+            }
+
+
+            posts[index].comments.push({
+
+                username: "you",
+
+                text: text
+
+            });
+
+
+            document.getElementById(
+                `comments-${index}`
+            ).innerHTML =
+                renderComments(
+                    posts[index].comments
+                );
+
+
+            input.value = "";
+
+
+        }
+
+
+
+        /* =====================================================
+           LIKES
+        ===================================================== */
+
+
+        function likePost(index, button) {
+
+
+            const post =
+                posts[index];
+
+
+            if (
+                button.classList.contains("liked")
+            ) {
+
+
+                post.likes--;
+
+
+                button.classList.remove(
+                    "liked"
+                );
+
+
+                button.innerHTML = "♡";
+
+
+            } else {
+
+
+                post.likes++;
+
+
+                button.classList.add(
+                    "liked"
+                );
+
+
+                button.innerHTML = "♥";
+
+
+            }
+
+
+            document.getElementById(
+                `likes-${index}`
+            ).textContent =
+                `${post.likes} likes`;
+
+
+        }
+
+
+
+        /* =====================================================
+           COMMENT BUTTON
+        ===================================================== */
+
+
+        function focusComment(index) {
+
+
+            const input =
+                document.getElementById(
+                    `comment-input-${index}`
+                );
+
+
+            input.focus();
+
+
+        }
+
+
+
+        /* =====================================================
+           SHARE BUTTON
+        ===================================================== */
+
+
+        function sharePost() {
+
+
+            alert(":3");
+
+
+        }
+
+
+
+        /* =====================================================
+           STORY CAROUSEL
+        ===================================================== */
+
+
+        function scrollStories(amount) {
+
+
+            document
+                .getElementById("stories")
+                .scrollBy({
+
+                    left: amount,
+
+                    behavior: "smooth"
+
+                });
+
+
+        }
+
+
+
+        /* =====================================================
+           STORY VIEWER
+        ===================================================== */
+
+
+        let currentStoryImages = [];
+
+        let currentStoryIndex = 0;
+
+
+
+        function openStory(
+            username,
+            images,
+            avatar
+        ) {
+
+
+            /*
+                Save all of the pictures
+                for the current story.
+            */
+
+            currentStoryImages =
+                images;
+
+
+            /*
+                Always start at the
+                first picture.
+            */
+
+            currentStoryIndex = 0;
+
+
+            /*
+                Set username.
+            */
+
+            document.getElementById(
+                "storyUsername"
+            ).textContent =
+                username;
+
+
+            /*
+                Set profile picture.
+            */
+
+            document.getElementById(
+                "storyAvatar"
+            ).src =
+                avatar;
+
+
+            /*
+                Show the first story picture.
+            */
+
+            document.getElementById(
+                "storyImage"
+            ).src =
+                currentStoryImages[
+                    currentStoryIndex
+                ];
+
+
+            /*
+                Open the story viewer.
+            */
+
+            document.getElementById(
+                "storyViewer"
+            ).classList.add(
+                "active"
+            );
+
+
+        }
+
+
+
+        /* =====================================================
+           NEXT STORY IMAGE
+        ===================================================== */
+
+
+        function nextStoryImage(event) {
+
+
+            /*
+                Prevent the click from
+                closing the story viewer.
+            */
+
+            event.stopPropagation();
+
+
+            /*
+                Make sure there are
+                pictures to display.
+            */
+
+            if (
+                currentStoryImages.length === 0
+            ) {
+
+                return;
+
+            }
+
+
+            /*
+                Move to the next picture.
+            */
+
+            currentStoryIndex++;
+
+
+            /*
+                If we reached the end,
+                go back to the beginning.
+            */
+
+            if (
+                currentStoryIndex >=
+                currentStoryImages.length
+            ) {
+
+                currentStoryIndex = 0;
+
+            }
+
+
+            /*
+                Change the displayed image.
+            */
+
+            document.getElementById(
+                "storyImage"
+            ).src =
+                currentStoryImages[
+                    currentStoryIndex
+                ];
+
+
+        }
+
+
+
+        /* =====================================================
+           CLOSE STORY
+        ===================================================== */
+
+
+        function closeStory(event) {
+
+
+            /*
+                Clicking the X closes it.
+                Clicking the dark background
+                also closes it.
+            */
+
+            if (
+                !event ||
+                event.target.id ===
+                "storyViewer"
+            ) {
+
+
+                document.getElementById(
+                    "storyViewer"
+                ).classList.remove(
+                    "active"
+                );
+
+
+            }
+
+
+        }
+
+
+    </script>
+
+
+    
+    <script src="script.js"></script>
+   
+
+
+</body>
+
+</html>
