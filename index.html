@@ -302,7 +302,7 @@
             padding: 7px 15px;
             font-size: 14px;
             line-height: 1.4;
-            color:#61A9C2;
+            color: #61A9C2;
         }
 
 
@@ -532,10 +532,6 @@
 
                 <!-- YOUR STORY -->
 
-                <!--
-                    This does NOT do anything when clicked.
-                -->
-
                 <div class="story">
 
                     <div class="story-ring add-story">
@@ -671,7 +667,7 @@
 
 
                 <!-- =========================
-                     Yumi STORY
+                     YUMIKO STORY
                 ========================= -->
 
                 <div
@@ -680,7 +676,7 @@
                         'Yumiko',
                         [
                             'yumistory1.jpg',
-                             'yumistory2.jpg',
+                            'yumistory2.jpg',
                             'yumistory3.jpg',
                             'yumistory4.JPG',
                             'yumistory5.JPG'
@@ -709,7 +705,7 @@
 
 
                 <!-- =========================
-                     MINSU STORY
+                     DEVIORA STORY
                 ========================= -->
 
                 <div
@@ -720,7 +716,7 @@
                             'devistory1.jpg',
                             'devistory2.JPG',
                             'devistory3.jpg',
-                             'devistory4.JPG'
+                            'devistory4.JPG'
                         ],
                         'deviprofile.jpg'
                     )"
@@ -746,7 +742,7 @@
 
 
                 <!-- =========================
-                    Yunsu
+                     YUNSU STORY
                 ========================= -->
 
                 <div
@@ -778,6 +774,7 @@
                     </div>
 
                 </div>
+
 
 
                 <!-- =========================
@@ -839,11 +836,6 @@
             id="feed"
         >
 
-            <!--
-                POSTS ARE CREATED BY JAVASCRIPT
-                FROM THE POSTS ARRAY BELOW.
-            -->
-
         </section>
 
 
@@ -873,11 +865,6 @@
             </button>
 
 
-            <!--
-                Clicking this image advances
-                to the next story picture.
-            -->
-
             <img
                 id="storyImage"
                 src=""
@@ -887,7 +874,6 @@
 
 
             <div class="story-overlay">
-
 
                 <div class="story-profile">
 
@@ -903,7 +889,6 @@
 
                 </div>
 
-
             </div>
 
 
@@ -916,14 +901,11 @@
 
     <script>
 
-
         /* =====================================================
            POSTS
         ===================================================== */
 
-
         const posts = [
-
 
             {
                 username: "Trixie",
@@ -947,6 +929,7 @@
                         username: "Rin",
                         text: "You look overly good"
                     },
+
                     {
                         username: "Rin",
                         text: "Need dat"
@@ -961,6 +944,7 @@
                         username: "Yumiko",
                         text: "MY BAE"
                     },
+
                     {
                         username: "Minsu",
                         text: "👍"
@@ -998,12 +982,12 @@
                     {
                         username: "Kairo",
                         text: "So pretty!!"
-                    }
+                    },
 
                     {
                         username: "Vex",
                         text: "Omg..."
-                    }
+                    },
 
                     {
                         username: "LuminLover",
@@ -1016,98 +1000,53 @@
             },
 
 
-           {
-    username: "Deviora",
+            {
+                username: "Yunsu",
 
-    character: "ᶻ 𝗓 𐰁",
+                character: "˚ʚ♡ɞ˚",
 
-    avatar:
-        "deviprofile.jpg",
+                avatar:
+                    "yunsuprofile.jpg",
 
-    image:
-        "devipost.jpg",
+                image:
+                    "yunsupost.jpg",
 
-    likes: 3203,
+                likes: 10309,
 
-    caption:
-        "Not sure why everyone wanted me to post this (๑ᵔ⤙ᵔ๑)",
+                caption:
+                    "My beautiful wife",
 
-    comments: [
+                comments: [
 
-        {
-            username: "Anaka",
-            text: "Das ma girl"
-        },
+                    {
+                        username: "Vivian",
+                        text: "We aren't married..."
+                    },
 
-        {
-            username: "Kairo",
-            text: "So pretty!!"
-        },
+                    {
+                        username: "Vex",
+                        text: "This is such an aura loss"
+                    },
 
-        {
-            username: "Vex",
-            text: "Omg..."
-        },
+                    {
+                        username: "Yumiko",
+                        text: "OMG!! I DIDNT KNOW YUNSU WAS MARRIED"
+                    },
 
-        {
-            username: "LuminLover",
-            text: "DEVIORA POSTED"
-        }
+                    {
+                        username: "Elyndra",
+                        text: "Tasty"
+                    }
 
-    ],
+                ],
 
-    time: "5 hours ago"
-},
-
-
-{
-    username: "Yunsu",
-
-    character: "˚ʚ♡ɞ˚",
-
-    avatar:
-        "yunsuprofile.jpg",
-
-    image:
-        "yunsupost.jpg",
-
-    likes: 10309,
-
-    caption:
-        "My beautiful wife",
-
-    comments: [
-
-        {
-            username: "Vivian",
-            text: "We aren't married..."
-        },
-
-        {
-            username: "Vex",
-            text: "This is such an aura loss"
-        },
-
-        {
-            username: "Yumiko",
-            text: "OMG!! I DIDNT KNOW YUNSU WAS MARRIED"
-        },
-
-        {
-            username: "Elyndra",
-            text: "Tasty"
-        }
-
-    ],
-
-    time: "Yesterday"
-},
+                time: "Yesterday"
+            },
 
 
             /* =================================================
-               COPY THIS OBJECT TO ADD ANOTHER POST
+               ADD ANOTHER POST HERE
             ================================================= */
-
 
             {
                 username: "ADD_USERNAME",
@@ -1137,7 +1076,6 @@
                 time: "Just now"
             }
 
-
         ];
 
 
@@ -1146,13 +1084,11 @@
            RENDER FEED
         ===================================================== */
 
-
         const feed =
             document.getElementById("feed");
 
 
         posts.forEach((post, index) => {
-
 
             const postElement =
                 document.createElement("article");
@@ -1163,9 +1099,7 @@
 
             postElement.innerHTML = `
 
-
                 <div class="post-header">
-
 
                     <img
                         class="post-avatar"
@@ -1176,16 +1110,13 @@
 
                     <div class="post-user-info">
 
-
                         <div class="post-username">
                             ${post.username}
                         </div>
 
-
                         <div class="post-character">
                             ${post.character}
                         </div>
-
 
                     </div>
 
@@ -1193,7 +1124,6 @@
                     <button class="more-button">
                         ···
                     </button>
-
 
                 </div>
 
@@ -1207,12 +1137,7 @@
 
 
 
-                <!-- POST BUTTONS -->
-
                 <div class="post-actions">
-
-
-                    <!-- LIKE -->
 
                     <button
                         class="action-button like-button"
@@ -1222,8 +1147,6 @@
                     </button>
 
 
-                    <!-- COMMENT -->
-
                     <button
                         class="action-button"
                         onclick="focusComment(${index})"
@@ -1232,15 +1155,12 @@
                     </button>
 
 
-                    <!-- SHARE -->
-
                     <button
                         class="action-button"
                         onclick="sharePost()"
                     >
                         ↗
                     </button>
-
 
                 </div>
 
@@ -1271,9 +1191,7 @@
                     class="comments"
                     id="comments-${index}"
                 >
-
                     ${renderComments(post.comments)}
-
                 </div>
 
 
@@ -1288,7 +1206,6 @@
                     class="comment-form"
                     onsubmit="addComment(event, ${index})"
                 >
-
 
                     <input
                         class="comment-input"
@@ -1306,15 +1223,12 @@
                         Post
                     </button>
 
-
                 </form>
-
 
             `;
 
 
             feed.appendChild(postElement);
-
 
         });
 
@@ -1324,36 +1238,27 @@
            COMMENTS
         ===================================================== */
 
-
         function renderComments(comments) {
-
 
             return comments.map(comment => `
 
-
                 <div class="comment">
-
 
                     <strong>
                         ${comment.username}
                     </strong>
 
-
                     ${comment.text}
-
 
                 </div>
 
-
             `).join("");
-
 
         }
 
 
 
         function addComment(event, index) {
-
 
             event.preventDefault();
 
@@ -1392,7 +1297,6 @@
 
             input.value = "";
 
-
         }
 
 
@@ -1401,9 +1305,7 @@
            LIKES
         ===================================================== */
 
-
         function likePost(index, button) {
-
 
             const post =
                 posts[index];
@@ -1413,31 +1315,23 @@
                 button.classList.contains("liked")
             ) {
 
-
                 post.likes--;
-
 
                 button.classList.remove(
                     "liked"
                 );
 
-
                 button.innerHTML = "♡";
-
 
             } else {
 
-
                 post.likes++;
-
 
                 button.classList.add(
                     "liked"
                 );
 
-
                 button.innerHTML = "♥";
-
 
             }
 
@@ -1447,7 +1341,6 @@
             ).textContent =
                 `${post.likes} likes`;
 
-
         }
 
 
@@ -1456,9 +1349,7 @@
            COMMENT BUTTON
         ===================================================== */
 
-
         function focusComment(index) {
-
 
             const input =
                 document.getElementById(
@@ -1466,8 +1357,9 @@
                 );
 
 
-            input.focus();
-
+            if (input) {
+                input.focus();
+            }
 
         }
 
@@ -1477,12 +1369,9 @@
            SHARE BUTTON
         ===================================================== */
 
-
         function sharePost() {
 
-
             alert(":3");
-
 
         }
 
@@ -1492,13 +1381,15 @@
            STORY CAROUSEL
         ===================================================== */
 
-
         function scrollStories(amount) {
 
+            const stories =
+                document.getElementById("stories");
 
-            document
-                .getElementById("stories")
-                .scrollBy({
+
+            if (stories) {
+
+                stories.scrollBy({
 
                     left: amount,
 
@@ -1506,6 +1397,7 @@
 
                 });
 
+            }
 
         }
 
@@ -1514,7 +1406,6 @@
         /* =====================================================
            STORY VIEWER
         ===================================================== */
-
 
         let currentStoryImages = [];
 
@@ -1528,27 +1419,10 @@
             avatar
         ) {
 
-
-            /*
-                Save all of the pictures
-                for the current story.
-            */
-
-            currentStoryImages =
-                images;
-
-
-            /*
-                Always start at the
-                first picture.
-            */
+            currentStoryImages = images;
 
             currentStoryIndex = 0;
 
-
-            /*
-                Set username.
-            */
 
             document.getElementById(
                 "storyUsername"
@@ -1556,19 +1430,11 @@
                 username;
 
 
-            /*
-                Set profile picture.
-            */
-
             document.getElementById(
                 "storyAvatar"
             ).src =
                 avatar;
 
-
-            /*
-                Show the first story picture.
-            */
 
             document.getElementById(
                 "storyImage"
@@ -1578,16 +1444,11 @@
                 ];
 
 
-            /*
-                Open the story viewer.
-            */
-
             document.getElementById(
                 "storyViewer"
             ).classList.add(
                 "active"
             );
-
 
         }
 
@@ -1597,22 +1458,10 @@
            NEXT STORY IMAGE
         ===================================================== */
 
-
         function nextStoryImage(event) {
-
-
-            /*
-                Prevent the click from
-                closing the story viewer.
-            */
 
             event.stopPropagation();
 
-
-            /*
-                Make sure there are
-                pictures to display.
-            */
 
             if (
                 currentStoryImages.length === 0
@@ -1623,17 +1472,8 @@
             }
 
 
-            /*
-                Move to the next picture.
-            */
-
             currentStoryIndex++;
 
-
-            /*
-                If we reached the end,
-                go back to the beginning.
-            */
 
             if (
                 currentStoryIndex >=
@@ -1645,17 +1485,12 @@
             }
 
 
-            /*
-                Change the displayed image.
-            */
-
             document.getElementById(
                 "storyImage"
             ).src =
                 currentStoryImages[
                     currentStoryIndex
                 ];
-
 
         }
 
@@ -1665,15 +1500,7 @@
            CLOSE STORY
         ===================================================== */
 
-
         function closeStory(event) {
-
-
-            /*
-                Clicking the X closes it.
-                Clicking the dark background
-                also closes it.
-            */
 
             if (
                 !event ||
@@ -1681,26 +1508,17 @@
                 "storyViewer"
             ) {
 
-
                 document.getElementById(
                     "storyViewer"
                 ).classList.remove(
                     "active"
                 );
 
-
             }
-
 
         }
 
-
     </script>
-
-
-    
-    <script src="script.js"></script>
-   
 
 
 </body>
